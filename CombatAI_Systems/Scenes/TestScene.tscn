@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://3qofescicq0x"]
+
+[ext_resource type="Script" uid="uid://dr3pr1814rwuj" path="res://Scripts/character_movement.gd" id="1_b5ayd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5lt6y"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b5ayd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b5ayd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lt6y"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b5ayd"]
+
+[sub_resource type="Sky" id="Sky_b5ayd"]
+sky_material = SubResource("ProceduralSkyMaterial_b5ayd")
+
+[sub_resource type="Environment" id="Environment_5lt6y"]
+background_mode = 2
+sky = SubResource("Sky_b5ayd")
+ambient_light_source = 3
+ambient_light_color = Color(0.5905863, 1.2480398, 1.5862968, 1)
+reflected_light_source = 2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8k7wh"]
+
+[sub_resource type="Compositor" id="Compositor_iufkg"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.031173, 0)
+script = ExtResource("1_b5ayd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_5lt6y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_b5ayd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(13.392865, 0, 0, 0, 1, 0, 0, 0, 10.012321, 0, 0, 0)
+mesh = SubResource("PlaneMesh_b5ayd")
+surface_material_override/0 = SubResource("StandardMaterial3D_5lt6y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7019542, 0.7122221, 0, -0.7122221, 0.7019542, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.73091316, 0.68247056, 0, -0.68247056, 0.7309131, 0, 10.514818, 13.116883)
+fov = 77.6
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5lt6y")
+camera_attributes = SubResource("CameraAttributesPractical_8k7wh")
+compositor = SubResource("Compositor_iufkg")
