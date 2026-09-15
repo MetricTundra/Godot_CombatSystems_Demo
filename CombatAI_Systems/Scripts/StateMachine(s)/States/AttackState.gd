@@ -1,10 +1,7 @@
-class_name State
-extends Node
+class_name AttackState
+extends State
 
-var actor: Node
-var state_machine: StateMachine
-
-func enter():
+func enter(data: Variant = null):
     pass
 
 func exit():
@@ -15,6 +12,3 @@ func update(delta: float):
 
 func physics_update(delta: float):
     pass
-
-
-
